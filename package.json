@@ -1,0 +1,23 @@
+{
+  "name": "js-ajax",
+  "version": "1.0.0",
+  "description": "JS AJAX Demo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "js",
+    "ajax",
+    "express"
+  ],
+  "author": "Sara Castillo <saracastillo0@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0"
+  },
+  "repository": { 
+  "type": "git",
+  "url": "https://github.com/SARISCJ/web_star.git"
+  }
+}
