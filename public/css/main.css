@@ -9,3 +9,7 @@
 .botones {
 	height: 60px;
 }
+
+.btn {
+	display: block;
+}

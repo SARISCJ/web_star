@@ -56,4 +56,19 @@ $(document).ready(function(){
 		alert("Hola!");
 	});
 
-});
+	$("#species").change(function(e) {
+		alert($(this).val()); // 20|40|45
+		for (var i = 0; i < 3; i++) {
+			$.getJSON("/people/" + arreglo[i], function() {
+				$("#people").append(personajes);
+			})
+		}
+	});
+
+
+	
+
+
+ 
+
+  });
