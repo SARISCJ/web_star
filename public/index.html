@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>SWAPI Client</title>
+	<title>SWAPI SPECIES</title>
 	<!-- Compiled and minified CSS -->
   	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/vendor/materialize.css">
@@ -10,41 +10,16 @@
 
 </head>
 <body class="purple lighten-5">
+	<h1>SWAPI SPECIES</h1>
 	<section class="container">
-		<h1 class="center">SWAPI Client</h1>
-		<div class="center">
-			<a id="previous" class="btn-floating btn-large waves-effect waves-light pink darken-4 left">
-				<i class="material-icons white-text">skip_previous</i>
-			</a>
-			<a id="next" class="btn-floating btn-large waves-effect waves-light pink darken-4 right">
-				<i class="material-icons white-text">skip_next</i>
-			</a>	
-			<h3>Total: <span id="total" class=" pink-text">##</span></h3>
+	<div class="row">	
+		<div class="input-field col s4 m4">
+			<select class="pink-text selectpicker" id="species">
+				<option value="1">__</option>
+			</select>
+			<div class="row" id="contenido"></div>
 		</div>
-		<div class="row" id="people">
-			<div class="col s12 m4">
-			    <div class="card horizontal">
-			      	<div class="card-stacked">
-			        	<div class="card-content white-text pink darken-4">
-			          		<p class="ml-5">Hi! Mi name is: <strong>____</strong> </p> 
-			        	</div>
-				        <div class="card-action">
-				          	<a href="#" class="pink-text">This is a link</a>
-				        </div>
-				    </div>
-		    	</div>
-	  		</div>    
-		</div>
-		  <!-- Dropdown Trigger -->
-	  <a class='dropdown-button btn' data-beloworigin="true" href='#' data-activates='dropdown1'>Drop Me!</a>
-
-	  <!-- Dropdown Structure -->
-	  <ul id='dropdown1' class='dropdown-content'>
-	    <li><a href="#!">one</a></li>
-	    <li><a href="#!">two</a></li>
-	    <li class="divider"></li>
-	    <li><a href="#!">three</a></li>
-	  </ul>
+	</div>		
 	</section>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript"  src="js/vendor/materialize.js">></script> 

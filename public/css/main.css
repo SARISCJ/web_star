@@ -7,9 +7,16 @@
 }
 
 .botones {
-	height: 60px;
+	height: 70px;
 }
 
-.btn {
+.total {
+    background-color: black;
+    color: #FF7043 ;
+    padding: 10px;
+    border-radius: 50%;
+}
+#species{
 	display: block;
+	border-color: #880e4f;
 }

@@ -1,8 +1,8 @@
 var template = '<div class="col s12 m4">' +
 		    '<div class="card horizontal hoverable">' +
 		      	'<div class="card-stacked">' +
-		        	'<div class="white-text pink darken-4">' +
-		          		'<p class="ml-5">Hi, my name is <strong>{{name}}</strong></p>' +
+		        	'<div class="card-content white-text pink darken-4">' +
+		          		'<p>Hi, my name is <strong>{{name}}</strong></p>' +
 		        	'</div>' +
 			        '<div class="card-action">' +
 			          	'<a data-show-url="{{url}}" class="about pink-text">See more about me</a>' +
@@ -11,64 +11,38 @@ var template = '<div class="col s12 m4">' +
 	    	'</div>' +
 	  	'</div>';
 
+var species = '<option value="{{valor}}">{{specie}}</option>'
+
 $(document).ready(function(){
-	var formatResponse = function(response) { 
-		$("#total").text(response.count);
-		var personajes = "";
-		$.each(response.results, function(i, personaje){
-			personajes += template
-				.replace("{{name}}", personaje.name)
-				.replace("{{url}}", personaje.url);
-		});
+	var specieStar = function(response){
+	var people = "";
+	$.each(response.results, function(i,nombre){
+		var value = "";
+		var peopleUrl ="http://swapi.co/api/people/";
+		$.each(nombre.people, function(i,url){
+				console.log(url);
+				value += url.replace(peopleUrl,"");
+			});
+		people += species
 
-		$("#people").html(personajes);
-		$("#next").attr("data-url",response.next);
-		$("#previous").attr("data-url",response.previous);
-
-		if(!response.next) {
-			$("#next").fadeOut();
-		} else {
-			$("#next").fadeIn();
-		}
-		if(!response.previous) {
-			$("#previous").fadeOut();
-		} else {
-			$("#previous").fadeIn();
-		}
-	};
-		
-	$.getJSON("http://swapi.co/api/people/", formatResponse);
-
-	$("#next").click(function(event){
-		event.preventDefault();
-		var url = $(this).attr("data-url");
-		$.getJSON(url, formatResponse);
+		.replace("{{specie}}", nombre.name)
+		.replace("{{valor}}",value.substring(0,value.length-1));
 	});
-
-	$("#previous").click(function(event){
-		event.preventDefault();
-		var url = $(this).attr("data-url");
-		$.getJSON(url, formatResponse);
-	});
-
-	$("#people").on("click",".about",function(event){
-		event.preventDefault();
-		alert("Hola!");
-	});
-
-	$("#species").change(function(e) {
-		alert($(this).val()); // 20|40|45
-		for (var i = 0; i < 3; i++) {
-			$.getJSON("/people/" + arreglo[i], function() {
-				$("#people").append(personajes);
-			})
-		}
-	});
-
-
 	
+	$("#species").html('<option value ="" disabled selected>Selecciona una Specie</option>');
+	$("#species").append(people);
+	 }
+	
+	$.getJSON("http://swapi.co/api/species/", specieStar);
+});
 
-
- 
-
-  });
+$(".container").on("change","#species",function(){
+	$("#contenido").html("");
+	var numero = $(this).val().split("/");
+	for(var i=0; i<numero.length;i++){
+		$.getJSON("http://swapi.co/api/people/"+numero[i]+"/",function(response){
+			var tiposSpecies = template.replace("{{name}}",response.name);
+			$("#contenido").append(tiposSpecies);
+		});
+	};
+});
